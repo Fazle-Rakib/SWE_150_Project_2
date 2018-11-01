@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1541049357 source:d:\conqurer\sfml latest\game\main.cpp
+	<SFML/Graphics.hpp>
+	<iostream>
+	<string>
+
