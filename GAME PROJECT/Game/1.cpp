@@ -17,23 +17,16 @@ int main()
     RenderWindow window;
     window.create(VideoMode(925,600),"Bomber Friends");
 
-    //**2**//
+
     enum Direction{Down,Left,Right,Up};
 
     sf::Vector2i source(1,Down); // WE can handle source by source.x & source.y
 
-    //window.setKeyRepeatEnabled(false);
 
-    //TEXTURE DECLERATION
-    sf::Texture texturePlayer;
-    sf::Texture textureFrame;
-    sf::Texture textureGrass;
-    sf::Texture textureBlock;
-    sf::Texture enemy_anime;
-    sf::Texture Block_footbe;
-    sf::Texture Block_footbe1;
+   ///TEXTURE DECLERATION
+Texture textureFrame,texturePlayer, enemy_anime,textureGrass,textureBlock,Block_footbe ,Block_footbe1;
 
-    //LOAD FILE
+    ///LOAD FILE
     texturePlayer.loadFromFile("data/image/kavi.png");
     textureFrame.loadFromFile("data/image/frame1.png");
     textureGrass.loadFromFile("data/image/grass.png");
@@ -43,13 +36,9 @@ int main()
     textureBlock.loadFromFile("data/image/block_fix.png");
 
 
-    sf::Sprite playerImage(texturePlayer); //,sf::IntRect(0,0,35,50)
-    sf::Sprite blocki(textureBlock);
-    sf::Sprite enemyImage(enemy_anime);
-    sf::Sprite frame(textureFrame);
-    sf::Sprite grass(textureGrass);
-    sf::Sprite block_foot (Block_footbe);
-    sf::Sprite block_foot1 (Block_footbe1);
+     ///sprite_decl
+ Sprite frame(textureFrame),playerImage(texturePlayer),grass(textureGrass),enemyImage(enemy_anime);
+    Sprite blocki(textureBlock), block_foot (Block_footbe),block_foot1 (Block_footbe1);
 
     playerImage.setPosition(186,50);
     enemyImage.setPosition(386,50);
@@ -94,6 +83,7 @@ int main()
     bool menu1 = true,game = false, gameover = false, Display = false;
 
 
+    bool colli=false;
 
     while(window.isOpen())
     {
@@ -177,15 +167,7 @@ int main()
                                 window.close();
                             }
                         }
-                    /*if(event.mouseButton.button == Mouse::Right)
-                    {
-                            menuSound.pause();
-                            gameSound.play();
-                            menu1 = false;
-                            game = true;
-                            gameover = false;
-                    }*/
-                    //break;
+
 
                 menu.draw(window);
 
@@ -238,7 +220,7 @@ int main()
                             }
                         }
 
-                        ///foota block
+                        /// block _blust
                         int j=4;
                         while(j<=vect1.size())
                         {
