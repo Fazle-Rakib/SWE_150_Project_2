@@ -34,6 +34,10 @@
 		</Compiler>
 		<Unit filename="1.cpp" />
 		<Unit filename="1.h" />
+		<Unit filename="Collision.cpp" />
+		<Unit filename="Collision.h" />
+		<Unit filename="bomb.cpp" />
+		<Unit filename="collision.h" />
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="menu.cpp" />
