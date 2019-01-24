@@ -19,6 +19,7 @@ int pos=0;
 int i0,he_sprite_num=1;
 int heart_sprite_num=1;
 int levelCheck = 0;
+bool l1=false,l2=false,l3=false,l0=false;
 class classBomb
 {
 public:
@@ -1062,7 +1063,7 @@ int main()
 
                             if(explClock[i].getElapsedTime().asSeconds() >= 6)
                             {
-                                cout << "D RRR Out\n";
+                                //cout << "D RRR Out\n";
                                 spriteexplsoleR[j].setPosition(-450,-450);
                                 window.draw(spriteexplsoleR[j]);
                                 f0[j] = false;
@@ -1070,7 +1071,7 @@ int main()
 
                             if(explClock[i].getElapsedTime().asSeconds() >= 5 && explClock[i].getElapsedTime().asSeconds() < 5.8)
                             {
-                                cout << "D RRR IN\n";
+                                //cout << "D RRR IN\n";
                                 spriteexplsoleR[j].setPosition(pos_X[j]-14.25,pos_Y[0]-12.5);
                                 window.draw(spriteexplsoleR[j]);
                                 f0[j]  = true;
@@ -1089,14 +1090,14 @@ int main()
                             pos_Y[0] = vecExpl[i][1]+50;
                             if(explClock[i].getElapsedTime().asSeconds() >= 6)
                             {
-                                cout << "D LLL OUT\n";
+                                //cout << "D LLL OUT\n";
                                 spriteexplsoleL[j].setPosition(-450,-450);
                                 window.draw(spriteexplsoleL[j]);
                                 f1[j] = false;
                             }
                             if(explClock[i].getElapsedTime().asSeconds() >= 5 && explClock[i].getElapsedTime().asSeconds() < 5.8)
                             {
-                                cout << "D LLL IN\n";
+                                //cout << "D LLL IN\n";
                                 spriteexplsoleL[j].setPosition(pos_X[j]-14.25,pos_Y[0]-12.5);
                                 window.draw(spriteexplsoleL[j]);
                                 f1[j]  = true;
@@ -1110,7 +1111,7 @@ int main()
 
                             if(explClock[i].getElapsedTime().asSeconds() >= 6)
                             {
-                                cout << "D UUU OUT\n";
+                                //cout << "D UUU OUT\n";
                                 spriteexplsoleU[j].setPosition(-450,-450);
                                 window.draw(spriteexplsoleU[j]);
                                 f2[j] = false;
@@ -1118,7 +1119,7 @@ int main()
 
                             if(explClock[i].getElapsedTime().asSeconds() >= 5 && explClock[i].getElapsedTime().asSeconds() < 5.8)
                             {
-                                cout << "D UUU IN\n";
+                                //cout << "D UUU IN\n";
                                spriteexplsoleU[j].setPosition(pos_X[0],pos_Y[j]-20);///14.25,12.5
                                window.draw(spriteexplsoleU[j]);
                                f2[j]  = true;
@@ -1133,7 +1134,7 @@ int main()
                             pos_Y[j] = vecExpl[i][1] + (j+1)*50;
                             if(explClock[i].getElapsedTime().asSeconds() >= 6)
                             {
-                                cout << "D Down OUT\n";
+                                //cout << "D Down OUT\n";
                                 spriteexplsoleD[j].setPosition(-450,-450);
                                 window.draw(spriteexplsoleD[j]);
                                 f3[j] = false;
@@ -1141,7 +1142,7 @@ int main()
 
                             if(explClock[i].getElapsedTime().asSeconds() >= 5 && explClock[i].getElapsedTime().asSeconds() < 5.8)
                             {
-                                cout << "D Down IN\n";
+                                //cout << "D Down IN\n";
                                 spriteexplsoleD[j].setPosition(pos_X[0],pos_Y[j]-50);
                                 window.draw(spriteexplsoleD[j]);
                                 f3[j]  = true;
@@ -1155,25 +1156,25 @@ int main()
                         {
                             if(f0[h] == true)
                             {
-                                cout << "New RRR Out\n";
+                                //cout << "New RRR Out\n";
                                 spriteexplsoleR[h].setPosition(-450,-450);
                                 window.draw(spriteexplsoleR[h]);
                             }
                             if(f1[h] == true)
                             {
-                                cout << "New LLL OUT\n";
+                                //cout << "New LLL OUT\n";
                                 spriteexplsoleL[h].setPosition(-450,-450);
                                 window.draw(spriteexplsoleL[h]);
                             }
                             if(f2[h] == true)
                             {
-                                cout << "New UUU OUT\n";
+                                //cout << "New UUU OUT\n";
                                 spriteexplsoleU[h].setPosition(-450,-450);
                                 window.draw(spriteexplsoleU[h]);
                             }
                             if(f3[h] == true)
                             {
-                                cout << "New Down OUT\n";
+                                //cout << "New Down OUT\n";
                                 spriteexplsoleD[h].setPosition(-450,-450);
                                 window.draw(spriteexplsoleD[h]);
                             }
@@ -1720,7 +1721,7 @@ int main()
                         }
                         if(fanda==1)
                         {
-                            cout << "Left" << endl;
+                            //cout << "Left" << endl;
                             //block_foot1.setPosition(-200,-200);
                             //window.draw(block_foot1);
                         }
@@ -1883,46 +1884,54 @@ int main()
                 for(int h =0; h < playerPower; h++)
                 {
                     ///R
-                      if(Collision::PixelPerfectTest(spriteexplsoleR[h],playerImage))
+                      if(Collision::PixelPerfectTest(spriteexplsoleR[h],playerImage) && p1_expl_colli == false && l0 ==false)
                     {
-                        if(playerLifeClock[0].getElapsedTime().asSeconds() > 2)
+                        if(playerLifeClock[0].getElapsedTime().asSeconds() > 2 )
                         {
-                            cout << "RRRRRR\n";
+                            //cout << "RRRRRR\n";
+                            l0 = true;
                             playerLifeClock[0].restart();
                             p1_expl_colli = true;
                         }
                     }
                     ///L
-                    else if(Collision::PixelPerfectTest(spriteexplsoleL[h],playerImage))
+                    else if(Collision::PixelPerfectTest(spriteexplsoleL[h],playerImage) && p1_expl_colli == false && l1 == false)
                     {
                         if(playerLifeClock[1].getElapsedTime().asSeconds() > 2)
                         {
-                            cout << "LLLLLL\n";
+                            //cout << "LLLLLL\n";
+                            l1 = true;
                             playerLifeClock[1].restart();
                             p1_expl_colli = true;
                         }
                     }
 
                     ///U
-                     else if(Collision::PixelPerfectTest(spriteexplsoleU[h],playerImage) && p1_expl_colli == false)
+                     else if(Collision::PixelPerfectTest(spriteexplsoleU[h],playerImage) && p1_expl_colli == false && l2 == false)
                     {
                         if(playerLifeClock[2].getElapsedTime().asSeconds() > 2)
                         {
-                            cout << "UUUUUU\n";
+                            //cout << "UUUUUU\n";
+                            l2 = true;
                             playerLifeClock[2].restart();
                             p1_expl_colli = true;
                         }
                     }
 
                 ///D
-                    else if(Collision::PixelPerfectTest(spriteexplsoleD[h],playerImage) && p1_expl_colli == false)
+                    else if(Collision::PixelPerfectTest(spriteexplsoleD[h],playerImage) && p1_expl_colli == false && l3 == false)
                     {
                         if(playerLifeClock[3].getElapsedTime().asSeconds() > 2)
                         {
-                            cout << "DDDDDD\n";
+                            //cout << "DDDDDD\n";
+                            l3 = true;
                             playerLifeClock[3].restart();
                             p1_expl_colli = true;
                         }
+                    }
+                    else
+                    {
+                        p1_expl_colli = false;
                     }
                 }
                                 ///for devil
@@ -2057,19 +2066,19 @@ int main()
                     if(Collision::PixelPerfectTest(hea[1][heart_num1],playerImage))
                     {
                        pl_life_colli1=true;
-                        cout << "PLAYER collision life" << endl;
+                        //cout << "PLAYER collision life" << endl;
                     }
 
                     if(Collision::PixelPerfectTest(hea[2][heart_num2],playerImage))
                     {
                         pl_life_colli2=true;
-                        cout << "PLAYER collision life" << endl;
+                        //cout << "PLAYER collision life" << endl;
                     }
 
                     if(Collision::PixelPerfectTest(hea[3][heart_num2],playerImage))
                     {
                         pl_life_colli3=true;
-                        cout << "PLAYER collision life" << endl;
+                        //cout << "PLAYER collision life" << endl;
                     }
 
                     if(Collision::PixelPerfectTest(death_scythe,playerImage) )
